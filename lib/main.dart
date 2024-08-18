@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pag_agora_admin/core/themes/app_theme.dart';
 import 'package:pag_agora_admin/features/forgot_password/presentation/viewmodels/forgot_password_view_model.dart';
 import 'package:pag_agora_admin/features/forgot_password/presentation/views/forgot_password_view.dart';
 import 'package:pag_agora_admin/features/login/presentation/viewmodels/login_view_model.dart';
@@ -25,6 +26,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/login',
+      theme: AppTheme.theme,
       routes: {
         '/login' : (context) => const LoginView(),
         '/forgot_password' : (context) => const ForgotPasswordView(),

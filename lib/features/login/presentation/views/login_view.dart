@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pag_agora_admin/features/login/presentation/widgets/forgot_password_text_button.dart';
-import 'package:pag_agora_admin/features/login/presentation/widgets/sign_up_button.dart';
 import 'package:pag_agora_admin/features/login/presentation/widgets/login_data_input.dart';
 import 'package:pag_agora_admin/features/login/presentation/widgets/login_send_button.dart';
 import 'package:provider/provider.dart';
@@ -15,32 +13,31 @@ class LoginView extends StatelessWidget {
     LoginViewModel loginViewModel = context.watch<LoginViewModel>();
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(32.0, 0.0, 0.0, 0.0),
+            child: Text("Acesse sua conta", style: TextStyle(color: Theme.of(context).colorScheme.surface, fontSize: 28),),
+          ),
           LoginDataInput(
             onChanged: loginViewModel.setEmail, 
             labelText: "Email",
-            prefixIcon: const Icon(Icons.email),
+            prefixIcon: Icon(Icons.email, color: Theme.of(context).colorScheme.surface,),
           ),
           LoginDataInput(
             onChanged: loginViewModel.setPassword, 
             labelText: "Senha",
-            prefixIcon: const Icon(Icons.lock),
+            prefixIcon: Icon(Icons.lock, color: Theme.of(context).colorScheme.surface,),
             obscureText: loginViewModel.obscurePassword,
             suffixIcon: loginViewModel.obscurePassword? Icons.visibility : Icons.visibility_off,
             suffixCallBack: () => loginViewModel.setObscurePassword(),
           ),
-          const ForgotPasswordTextButton(),
           LoginSendButton(
             loading: loginViewModel.loading, 
             logLoginView: loginViewModel.logLoginView
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(24, 0 , 24, 0),
-            child: Divider(),
-          ),
-          const SignUpButton(),
         ],
       ),
     );

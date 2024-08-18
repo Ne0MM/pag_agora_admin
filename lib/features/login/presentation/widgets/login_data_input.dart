@@ -25,19 +25,28 @@ class LoginDataInput extends StatelessWidget {
       child: Row(
         children: [
           // Container to provide spacing between the icon and the text field
-          prefixIcon,
-          const SizedBox(width: 8.0), // Space between the icon and the text field
           Expanded(
             child: TextFormField(
+              style: TextStyle(color: Theme.of(context).colorScheme.surface),
               obscureText: obscureText,
               onChanged: onChanged,
+              cursorColor: Theme.of(context).colorScheme.surface,
               decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: labelText,
+                contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Theme.of(context).colorScheme.surface),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Theme.of(context).colorScheme.surface),
+                ),
+                prefixIcon: prefixIcon,
                 suffixIcon: IconButton(
                   onPressed: suffixCallBack?? suffixCallBack, 
                   icon: Icon(suffixIcon)
-                )
+                ),
+                suffixIconColor: Theme.of(context).colorScheme.surface,
+                labelText: labelText,
+                labelStyle: TextStyle(color: Theme.of(context).colorScheme.surface),
               ),
             ),
           ),

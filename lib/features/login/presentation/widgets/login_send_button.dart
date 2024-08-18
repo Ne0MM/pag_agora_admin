@@ -9,20 +9,28 @@ class LoginSendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 16.0),
       child: SizedBox(
         width: double.infinity,
         height: 40,
-        child: ElevatedButton(
-          onPressed: loading? null : logLoginView, 
-          child: loading? 
+        child: ElevatedButton.icon(
+          onPressed: logLoginView, 
+          style: ElevatedButton.styleFrom(
+            disabledBackgroundColor: Theme.of(context).colorScheme.onSurfaceVariant
+          ),
+          label: loading?
+            const Text("")
+          :
+            const Text("Entrar", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, height: -0.3),),
+          icon: loading?
             const SizedBox(
-              width: 25,
               height: 25,
+              width: 25,
               child: CircularProgressIndicator(),
             )
-              : 
-            const Text("Entrar"),
+          :
+            const Icon(Icons.arrow_forward, size: 25,),
+          iconAlignment: IconAlignment.end,
         ),
       )
     ); 
