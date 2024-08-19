@@ -22,6 +22,7 @@ class LoginView extends StatelessWidget {
             obscurePassword: loginViewModel.obscurePassword, 
             loading: loginViewModel.loading, 
             logLoginView: loginViewModel.logLoginView,
+            suffixCallBack: loginViewModel.setObscurePassword,
           ),
           const LoginSuperSnack(),
         ]
